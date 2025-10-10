@@ -714,3 +714,13 @@
 {"prompt": "Provide information about Store Store Braga (ID 33).", "completion": "City: Braga\nCountry: Portugal\nZIP Code: 4700-001\nNumber of Employees: 9\nLatitude: 41.5503\nLongitude: -8.4201"}
 {"prompt": "Provide information about Store Store Guimarães (ID 34).", "completion": "City: Guimarães\nCountry: Portugal\nZIP Code: 4800-001\nNumber of Employees: 9\nLatitude: 41.4444\nLongitude: -8.2962"}
 {"prompt": "Provide information about Store Store Coimbra (ID 35).", "completion": "City: Coimbra\nCountry: Portugal\nZIP Code: 3000-001\nNumber of Employees: 7\nLatitude: 40.2056\nLongitude: -8.4196"}
+{"prompt": "What outfit goes well for a man at a formal occasion with warm skin tone?", "completion": "Navy suit with white shirt, red tie, black shoes. Warm tones like gold accessories."}
+{"prompt": "Suggest casual wear for men with cool skin tone.", "completion": "Gray chinos, blue polo, white sneakers. Cool blues and grays flatter."}
+{"prompt": "Wedding attire for athletic build man.", "completion": "Slim-fit tuxedo, light gray, with vest. Avoid baggy cuts."}
+{"prompt": "Beach outfit for plus-size man.", "completion": "Linen shirt in pastel, khaki shorts, sandals. Loose fit for comfort."}
+{"prompt": "Office wear for slim man with olive skin.", "completion": "Charcoal pants, light blue shirt, brown belt. Earth tones suit olive skin."}
+{"prompt": "Party dress code for men over 50.", "completion": "Blazer over jeans, patterned shirt, loafers. Age-appropriate sophistication."}
+{"prompt": "Gym outfit for teenage boy.", "completion": "Athletic shorts, moisture-wicking tee, running shoes. Bright colors for energy."}
+{"prompt": "Winter formal for man with fair skin.", "completion": "Black wool suit, white shirt, scarf. Avoid pastels that wash out fair skin."}
+{"prompt": "Summer casual for man with dark skin.", "completion": "White linen pants, bold shirt, espadrilles. Vibrant colors pop on dark skin."}
+{"prompt": "Business meeting attire for short man.", "completion": "Tailored suit, vertical stripes, monochromatic. Elongates silhouette."}
