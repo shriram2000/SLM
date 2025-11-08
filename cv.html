@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shriram Soundararajan | AI Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+            --green: #64ffda;
+            --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy);
+            color: var(--slate);
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 150px;
+        }
+
+        /* Left Social Sidebar */
+        .left-sidebar {
+            position: fixed;
+            left: 40px;
+            bottom: 0;
+            z-index: 10;
+        }
+
+        .social__list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .social__list::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 90px;
+            margin: 0 auto;
+            background-color: var(--light-slate);
+        }
+
+        .social__list li {
+            margin-bottom: 20px;
+        }
+
+        .social__list a {
+            padding: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: var(--light-slate);
+            transition: var(--transition);
+        }
+
+        .social__list a:hover {
+            color: var(--green);
+            transform: translateY(-3px);
+        }
+
+        .social__list svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 11;
+            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            padding: 0 50px;
+        }
+
+        .nav__logo {
+            color: var(--green);
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav__link {
+            color: var(--lightest-slate);
+            text-decoration: none;
+            font-size: 13px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav__link::before {
+            content: "0" counter(item) ".";
+            margin-right: 5px;
+            color: var(--green);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            counter-increment: item 1;
+        }
+
+        .nav__link:hover {
+            color: var(--green);
+        }
+
+        .nav__toggle {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .hero__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero__content {
+            flex: 1;
+        }
+
+        .hero__title {
+            margin-top: 20px;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 600;
+            color: var(--lightest-slate);
+            line-height: 1.1;
+        }
+
+        .hero__subtitle {
+            margin-top: 10px;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 600;
+            color: var(--slate);
+            line-height: 0.9;
+        }
+
+        .typing-text {
+            color: var(--green);
+        }
+
+        .hero__description {
+            margin-top: 25px;
+            max-width: 540px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .hero__buttons {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.25rem 1.75rem;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn--primary {
+            color: var(--green);
+            background-color: transparent;
+            border: 1px solid var(--green);
+        }
+
+        .btn--primary:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .btn--outline {
+            color: var(--green);
+            background-color: transparent;
+            border: 1px solid var(--green);
+        }
+
+        .btn--outline:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .hero__image {
+            flex: 0 0 300px;
+        }
+
+        .hero__avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 4px;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1);
+            transition: var(--transition);
+            border: 2px solid var(--green);
+        }
+
+        .hero__avatar:hover {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section__title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 10px 0 40px;
+            width: 100%;
+            font-size: clamp(26px, 5vw, 32px);
+            font-weight: 600;
+            color: var(--lightest-slate);
+            counter-increment: section 1;
+        }
+
+        .section__title::before {
+            content: "0" counter(section) ".";
+            margin-right: 10px;
+            color: var(--green);
+            font-family: 'Courier New', monospace;
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 400;
+        }
+
+        .section__title::after {
+            content: "";
+            display: block;
+            position: relative;
+            width: 300px;
+            height: 1px;
+            margin-left: 20px;
+            background-color: var(--lightest-navy);
+        }
+
+        /* About Section */
+        .about__content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+
+        .about__text p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .about__card {
+            background-color: var(--light-navy);
+            border-radius: 4px;
+            padding: 30px;
+        }
+
+        .about__card h3 {
+            color: var(--lightest-slate);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .about__card ul {
+            list-style: none;
+        }
+
+        .about__card li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .about__card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--green);
+        }
+
+        /* Experience Section */
+        .experience__timeline {
+            max-width: 100%;
+        }
+
+        .experience__item {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: var(--light-navy);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .experience__item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .experience__header {
+            margin-bottom: 20px;
+        }
+
+        .experience__role {
+            color: var(--lightest-slate);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience__company {
+            color: var(--green);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .experience__date {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--slate);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .experience__description {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--green);
+            background-color: rgba(100, 255, 218, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* Projects Section */
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .project__card {
+            background-color: var(--light-navy);
+            border-radius: 4px;
+            padding: 30px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project__card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .card__body h3 {
+            color: var(--lightest-slate);
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card__body p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card__footer {
+            margin-top: auto;
+        }
+
+        .project__links {
+            margin-top: 15px;
+        }
+
+        .btn--sm {
+            padding: 10px 20px;
+            font-size: 12px;
+        }
+
+        /* Skills Section */
+        .skills__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skills__category h3 {
+            color: var(--lightest-slate);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--slate);
+            background-color: var(--light-navy);
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            color: var(--green);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact__content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact__content p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 50px;
+        }
+
+        .btn--lg {
+            padding: 1.5rem 2rem;
+            font-size: 16px;
+        }
+
+        .contact__grid-top,
+        .contact__grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .contact__card {
+            background-color: var(--light-navy);
+            border-radius: 4px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .contact__card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .contact__card svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--green);
+        }
+
+        .contact__card-info h4 {
+            color: var(--lightest-slate);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .contact__card-info p,
+        .contact__card-info a {
+            color: var(--slate);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .contact__copy-btn {
+            background: transparent;
+            border: 1px solid var(--green);
+            color: var(--green);
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact__copy-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .contact__copy-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1080px) {
+            .container {
+                padding: 0 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 50px;
+            }
+
+            .left-sidebar {
+                display: none;
+            }
+
+            .nav {
+                padding: 0 25px;
+            }
+
+            .hero__container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero__image {
+                order: -1;
+            }
+
+            .hero__buttons {
+                justify-content: center;
+            }
+
+            .about__content {
+                grid-template-columns: 1fr;
+            }
+
+            .section__title::after {
+                width: 200px;
+            }
+
+            .projects__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact__grid-top {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 25px;
+            }
+
+            .hero__title,
+            .hero__subtitle {
+                font-size: 40px;
+            }
+
+            .section__title::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Social Sidebar -->
+    <div class="left-sidebar">
+        <ul class="social__list">
+            <li><a href="https://github.com/Shriram" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/shriram-soundararajan" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a></li>
+            <li><a href="mailto:sriram142000@gmail.com" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Email</title><rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect><polyline points="3,5 12,13 21,5"></polyline></svg>
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Shriram</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list" style="counter-reset: item 0;">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
+                    <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <div class="hero__container container" style="counter-reset: section 0;">
+                <div class="hero__content">
+                    <h1 class="hero__title">Hi, I'm Shriram Soundararajan</h1>
+                    <h2 class="hero__subtitle"><span class="typing-text">AI Engineer & GenAI Specialist</span></h2>
+                    <p class="hero__description">
+                        Building intelligent systems with cutting-edge AI technologies. Specializing in Agentic AI, LLM applications, and secure ML deployments on cloud infrastructure.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="#experience" class="btn btn--primary">My Work</a>
+                        <a href="mailto:sriram142000@gmail.com" class="btn btn--outline">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <h2 class="section__title">About Me</h2>
+                <div class="about__content">
+                    <div class="about__text">
+                        <p>
+                            I'm a Software Engineer at Zensar Technologies with a passion for building intelligent AI systems. My work focuses on developing autonomous AI agents, GenAI applications, and deploying scalable ML solutions on cloud infrastructure.<br><br>
+                            
+                            I specialize in creating end-to-end AI applications that integrate cutting-edge technologies like LangChain, LangGraph, and Azure OpenAI to solve real-world business problems.
+                        </p>
+                    </div>
+                    <div class="about__info">
+                        <div class="about__card">
+                            <h3>Core Specializations</h3>
+                            <ul>
+                                <li>🤖 Agentic AI Development</li>
+                                <li>🧠 GenAI Applications</li>
+                                <li>☁️ Cloud ML Deployments</li>
+                                <li>🔒 AI Security & OWASP LLM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience section" id="experience">
+            <div class="container">
+                <h2 class="section__title">Work Experience</h2>
+                <div class="experience__timeline">
+                    <!-- Experience Item -->
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__role">Software Engineer</h3>
+                            <h4 class="experience__company">Zensar Technologies</h4>
+                            <span class="experience__date">November 2022 – Present • Chennai, India</span>
+                        </div>
+                        <p class="experience__description">
+                            • Designed and deployed autonomous AI agents using LangGraph and LangChain, enabling multi-step reasoning, tool invocation, and contextual knowledge retrieval<br><br>
+                            • Built end-to-end GenAI applications for document intelligence, FAQ generation, and natural language querying by integrating React frontends with Python (FastAPI) backends<br><br>
+                            • Deployed AI models and services on Azure Functions, Kubernetes (AKS), and Cosmos DB with Terraform automation for scalability and reproducibility<br><br>
+                            • Implemented containerized ML workflows (Docker/K8s) with CI/CD for continuous integration, versioning, and monitoring of GenAI services in production<br><br>
+                            • Engineered robust prompt workflows leveraging Azure OpenAI APIs and embeddings for domain-specific reasoning tasks with prompt injection mitigation and OWASP LLM guidelines<br><br>
+                            • Automated business processes using n8n and LLM-powered agents, streamlining internal operations<br><br>
+                            • Integrated Okta for authentication, authorization, and identity federation in enterprise applications
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">LangGraph</span>
+                            <span class="tag">LangChain</span>
+                            <span class="tag">Azure OpenAI</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">n8n</span>
+                            <span class="tag">Okta</span>
+                            <span class="tag">Cosmos DB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <h2 class="section__title">Featured Projects</h2>
+                <div class="projects__grid">
+                    <!-- Project Card 1 -->
+                    <div class="project__card card">
+                        <div class="card__body">
+                            <h3>Vector Search + Embedding Pipelines</h3>
+                            <p>Integrated embedding models (OpenAI, Cohere) with Pinecone to enable semantic search in knowledge-driven applications with real-time contextual retrieval.</p>
+                        </div>
+                        <div class="card__footer">
+                            <div class="tech-tags">
+                                <span class="tag">OpenAI</span>
+                                <span class="tag">Cohere</span>
+                                <span class="tag">Pinecone</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">FAISS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project__card card">
+                        <div class="card__body">
+                            <h3>Autonomous Agent Workflow</h3>
+                            <p>Built modular autonomous agent frameworks for multi-step task execution using LangGraph and AutoGen (proof of concept stage) with tool invocation capabilities.</p>
+                        </div>
+                        <div class="card__footer">
+                            <div class="tech-tags">
+                                <span class="tag">LangGraph</span>
+                                <span class="tag">AutoGen</span>
+                                <span class="tag">LLM APIs</span>
+                                <span class="tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="project__card card">
+                        <div class="card__body">
+                            <h3>Cryptographic and Steganographic Secured Model</h3>
+                            <p>Implementing encryption protocols, secure authentication mechanisms, and VPN tunnels for safeguarding drone communication systems.</p>
+                        </div>
+                        <div class="card__footer">
+                            <div class="tech-tags">
+                                <span class="tag">Cryptography</span>
+                                <span class="tag">Steganography</span>
+                                <span class="tag">VPN</span>
+                                <span class="tag">Security Protocols</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <h2 class="section__title">Technical Skills</h2>
+                <div class="skills__content">
+                    <div class="skills__category">
+                        <h3>Languages & Frameworks</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">React JS</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>GenAI & ML</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Agentic AI</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">LangGraph</span>
+                            <span class="skill-tag">n8n Workflow Automation</span>
+                            <span class="skill-tag">Prompt Engineering</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">OpenAI APIs</span>
+                            <span class="skill-tag">AutoGen</span>
+                            <span class="skill-tag">Azure OpenAI</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Azure Functions</span>
+                            <span class="skill-tag">Kubernetes (AKS)</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">MLOps</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Cosmos DB</span>
+                            <span class="skill-tag">MongoDB
